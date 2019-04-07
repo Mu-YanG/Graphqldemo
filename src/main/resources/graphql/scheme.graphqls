@@ -1,0 +1,27 @@
+type User{
+    id: ID
+    name: String
+    age: Int
+    balance: Int
+    books:[Book]
+}
+type Book{
+    bookid: ID
+    userid: Int
+    bookname: String
+    createtime : String
+    user:User
+}
+input BookInput{
+    bookid: Int!
+    userid: Int
+    bookname: String
+    createtime : String
+
+}
+input UserInput{
+    id: Int
+    name: String
+    age: Int
+    balance: Int
+}

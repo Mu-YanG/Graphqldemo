@@ -1,0 +1,12 @@
+type Query {
+    findAllusers: [User]
+    countuser: Long!
+    findById(id:ID):User
+    findAllBook:[Book]
+    getUserByPage(pagenumber:Int,pagesize1:Int):[User]
+}
+
+type Mutation {
+    insertUser(user:UserInput!) : Boolean!
+    insertBookByUser(user:UserInput!,book:BookInput!):Boolean!
+}

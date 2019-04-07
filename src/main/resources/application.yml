@@ -1,0 +1,28 @@
+#Change the port of the server
+server:
+  port: 80
+#Laod the mybatis properties
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+#Defind the alias
+  typeAliasesPackage: space.lvyang.graphql.demo.mapper
+#Data source
+
+spring:
+   datasource:
+      url: jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&&useSSL=false&serverTimezone=UTC
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: root
+logging:
+   level:
+     com: DEBUG
+#graphql
+graphql:
+  servlet:
+    mapping: /graphql
+    enabled: true
+    corsEnabled: true
+  tools:
+    schemaLocationPattern: "**/*.graphqls"
+    introspection-enabled: true

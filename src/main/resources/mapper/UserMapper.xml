@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="space.lvyang.graphql.demo.mapper.UserMapper">
+    <resultMap id="userBase" type="space.lvyang.graphql.demo.model.User" >
+        <id  column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="age" property="age" />
+        <result column="balance" property="balance" />
+    </resultMap>
+
+    <select id="getUser"  resultMap="userBase">
+         select * from user
+    </select>
+
+    <select id="countUser"  resultType="java.lang.Long">
+        select count(1) from user
+    </select>
+
+    <select id="getUserById"  resultMap="userBase" parameterType="java.lang.Integer">
+        select * from user
+        where id=#{id}
+    </select>
+    <select id="getUserByPage"  resultMap="userBase" parameterType="java.util.Map">
+        select * from user
+        LIMIT  #{params.pagenumber},#{params.pagesize}
+    </select>
+    <insert id="insertUser" parameterType="space.lvyang.graphql.demo.model.User" >
+        insert into user (id, name, age,
+        balance)
+        values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=SMALLINT},
+        #{balance,jdbcType=BIGINT})
+    </insert>
+
+    <update id="updateUser" parameterType="space.lvyang.graphql.demo.model.User" >
+        update USER
+        set name=#{User.name},age=#{User.age},balance=#{User.balance}
+        where id=#{User.id}
+    </update>
+
+
+
+
+</mapper>
